@@ -1,0 +1,91 @@
+<!-- <div class="container-fluid my-3">
+  <div class="col-12 d-flex justify-content-center">
+    <div class="col-4 todo-block">
+      <h4 class="text-center mb-3 todo-header">Todo List</h4>
+      <div class="col-12 d-flex align-items-center justify-content-center">
+        <input type="text" placeholder="Enter Text here..." class="col-6" [(ngModel)]="todoValue" (focus)="onInputFocus()"  [ngStyle]="{ 'border-color': inputTouched && todoValue =='' ? 'red' : '' }" />
+        <button class="btn btn-primary col-2" (click)="Submit()">
+          Add
+        </button>
+        <p *ngIf="todoValue == ''" style="color: red;"> *Required field </p>
+      </div>
+
+      <div class="todo-list mt-3">
+        <h5>TodoList</h5>
+          <div class="col-12 d-flex todo-single align-center mb-3" *ngFor="let todo of todoList; let i=index">
+            <input type="checkbox" class="col-1 todo-checkbox"  [(ngModel)]="todo.value" (ngModelChange)="changeTodo(i)"/>
+
+            <p class="col-9">{{todo.content}}</p>
+            <button type="button" class="btn btn-danger col-2 del-btn" (click)="delete(i,'todolist')">
+              Delete
+            </button>
+          </div>
+      </div>
+
+      <hr>
+      <div class="todo-list mt-3" *ngIf="finishedList.length>0">
+        <h5>Finished List</h5>
+        <div class="col-12 d-flex todo-single align-center" *ngFor="let todo of finishedList; let i=index">
+          <input type="checkbox" class="col-1 todo-checkbox" [(ngModel)]="todo.value" (ngModelChange)="changedFinsihed(i)"/>
+          <p class="col-9">{{todo.content}}</p>
+          <button type="button" class="btn btn-danger col-2 del-btn" (click)="delete(i,'finishedList')">
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+
+<!--
+ -->
+ <div class="container">
+  <div class="todo-header">
+    <h2>ToDo List</h2>
+    <img src="../../../assets/notebook.gif"  class="notebook" alt="gif">
+  </div>
+  <div class="todo-body">
+    <input type="text" id="todoText" class="todo-input" [(ngModel)]="todoValue" (focus)="onInputFocus()"  [ngStyle]="{ 'border-color': inputTouched && todoValue =='' ? 'red' : '' }" placeholder="&nbsp; Add your task" required>
+    <p *ngIf="todoValue == '' && inputTouched" style="color: red;" > *Required field </p>
+    <input class="btn btn-primary col-2" class="todo-input" [(ngModel)]="todoDescription" placeholder="Add description">
+    <img src="../../../assets/plus-small.png" alt="plus" id="AddUpdateClick" (click)="Submit()">
+  </div>
+
+  <!-- Todo list -->
+  <div class="todo-list mt-3" *ngIf="todoList.length>0">
+    <h4>Todo List</h4>
+    <ul class="list-items" id="list-items " *ngFor="let todo of todoList; let i=index">
+      <li >
+        <div>
+          {{todo.content}}
+          <p>{{todo.desc}}</p>
+        </div>
+        <div>
+          <input type="checkbox"  class="edit todo-controls-checkbox" alt="pencil" [(ngModel)]="todo.value" (ngModelChange)="changeTodo(i)" />
+          <img src="../../../assets/trash-bin.gif" class="delete todo-controls" alt="delete"  (click)="delete(i,'todolist')">
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Finished list -->
+
+  <hr>
+  <div class="todo-list mt-3" *ngIf="finishedList.length>0">
+
+    <h4>Finished List</h4>
+    <ul class="list-items" id="list-items " *ngFor="let todo of finishedList; let i=index">
+      <li >
+      <div [ngClass]="{'line-through': todo.value}">
+        {{todo.content}}
+      </div>
+      <div>
+        <input type="checkbox" class="edit todo-controls-checkbox"[(ngModel)]="todo.value" (ngModelChange)="changedFinsihed(i)" >
+        <img src="../../../assets/trash-bin.gif" class="delete todo-controls" alt="delete"  (click)="delete(i,'finishedList')">
+      </div>
+    </li>
+  </ul>
+</div>
+</div>
