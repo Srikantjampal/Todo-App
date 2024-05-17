@@ -56,9 +56,9 @@ ngOnInit():void{
 
 Submit(){
   if(this.todoValue =='') return;
-  this.todoList.push({content:this.todoValue,value:false,desc:this.todoDescription || 'Default Description'});
+  this.todoList.push({content:this.todoValue,value:false,desc:this.todoDescription || 'No Description'});
   this.todoValue = '';
-  this.todoDescription = ''; 
+  this.todoDescription = '';
   localStorage.setItem("todolist",JSON.stringify(this.todoList));
 
 }

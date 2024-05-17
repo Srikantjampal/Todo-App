@@ -46,11 +46,19 @@
     <h2>ToDo List</h2>
     <img src="../../../assets/notebook.gif"  class="notebook" alt="gif">
   </div>
-  <div class="todo-body">
-    <input type="text" id="todoText" class="todo-input" [(ngModel)]="todoValue" (focus)="onInputFocus()"  [ngStyle]="{ 'border-color': inputTouched && todoValue =='' ? 'red' : '' }" placeholder="&nbsp; Add your task" required>
-    <p *ngIf="todoValue == '' && inputTouched" style="color: red;" > *Required field </p>
-    <input class="btn btn-primary col-2" class="todo-input" [(ngModel)]="todoDescription" placeholder="Add description">
-    <img src="../../../assets/plus-small.png" alt="plus" id="AddUpdateClick" (click)="Submit()">
+  <div class="row todo-body">
+    <div class="col-12">
+      <input type="text" id="todoText" class="todo-input" [(ngModel)]="todoValue" (focus)="onInputFocus()"  [ngStyle]="{ 'border-color': inputTouched && todoValue =='' ? 'red' : '' }" placeholder="&nbsp; Add your task" required >
+      <p *ngIf="todoValue == '' && inputTouched" style="color: red;" > *Required field </p>
+    </div>
+    <div class="row">
+      <div class="col-10">
+        <input class="btn btn-primary col-2" class="todo-input" [(ngModel)]="todoDescription" placeholder="Add description">
+      </div>
+      <div class="col-2">
+        <img src="../../../assets/plus-small.png" alt="plus" id="AddUpdateClick" (click)="Submit()">
+      </div>
+    </div>
   </div>
 
   <!-- Todo list -->
